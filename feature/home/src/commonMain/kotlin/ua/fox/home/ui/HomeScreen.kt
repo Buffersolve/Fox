@@ -43,9 +43,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
-import fox.feature.home.generated.resources.Res
-import fox.feature.home.generated.resources.fox_icon
+import fox.core.generated.resources.Res
+import fox.core.generated.resources.error
+import fox.core.generated.resources.fox_icon
+import fox.core.generated.resources.retry
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import ua.fox.core.ui.LocalBarsPaddingValues
 import ua.fox.data.model.FoxModel
@@ -201,13 +204,13 @@ private fun ErrorContent(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
-                text = error ?: "Error",
+                text = error ?: stringResource(Res.string.error),
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.error,
                 textAlign = TextAlign.Center
             )
             Button(onClick = onRetry) {
-                Text("Retry")
+                Text(stringResource(Res.string.retry))
             }
         }
 

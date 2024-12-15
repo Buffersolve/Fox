@@ -27,7 +27,7 @@ class HomeViewModel : BaseViewModel<HomeUiState, HomeUiEvent, HomeNavEvent>(), K
      * (MVI) Reducer for [HomeUiEvent], [HomeUiState] and [HomeNavEvent]
      */
 
-    private val reducer = MainTabsReducer(HomeUiState())
+    private val reducer = HomeReducer(HomeUiState())
 
     override val state: StateFlow<HomeUiState>
         get() = reducer.state
@@ -43,7 +43,7 @@ class HomeViewModel : BaseViewModel<HomeUiState, HomeUiEvent, HomeNavEvent>(), K
         navEvent.forEach { reducer.sendNavEvent(it) }
     }
 
-    private class MainTabsReducer(initial: HomeUiState) : Reducer<HomeUiState, HomeUiEvent, HomeNavEvent>(initial) {
+    private class HomeReducer(initial: HomeUiState) : Reducer<HomeUiState, HomeUiEvent, HomeNavEvent>(initial) {
         override fun reduce(oldState: HomeUiState, event: HomeUiEvent) {
             when (event) {
                 is HomeUiEvent.UpdateData -> setState(oldState.copy(data = event.data))
@@ -74,10 +74,7 @@ class HomeViewModel : BaseViewModel<HomeUiState, HomeUiEvent, HomeNavEvent>(), K
 
     private var foxJob: Job? = null
 
-    init {
-        getFoxData()
-        println("HomeViewModel init        !!!!!!!!!!!")
-    }
+    init { getFoxData() }
 
     private fun getFoxData() {
         foxJob?.cancel()

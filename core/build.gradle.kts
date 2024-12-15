@@ -65,6 +65,11 @@ kotlin {
     }
 }
 
+compose.resources {
+    publicResClass = true
+    generateResClass = auto
+}
+
 android {
     namespace = "ua.fox.core"
     compileSdk = libs.versions.android.compileSdk.get().toInt()

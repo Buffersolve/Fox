@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+
+    <string name="error">Some error occur</string>
+    <string name="retry">Retry</string>
+
+    <string name="fox_app">Fox App</string>
+    <string name="dev_by">Developed by Volodymyr Labish</string>
+    <string name="theme">"A Modern Approach to Building the Architecture of Android Applications Using a Declarative Interface"</string>
+
+</resources>

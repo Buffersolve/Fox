@@ -19,7 +19,7 @@ class ViewerViewModel(savedStateHandle: SavedStateHandle) : BaseViewModel<Viewer
      * (MVI) Reducer for [ViewerUiState], [ViewerUiEvent] and [ViewerNavEvent]
      */
 
-    private val reducer = MainTabsReducer(ViewerUiState(fox))
+    private val reducer = ViewerReducer(ViewerUiState(fox))
 
     override val state: StateFlow<ViewerUiState>
         get() = reducer.state
@@ -35,7 +35,7 @@ class ViewerViewModel(savedStateHandle: SavedStateHandle) : BaseViewModel<Viewer
         navEvent.forEach {reducer.sendNavEvent(it) }
     }
 
-    private class MainTabsReducer(initial: ViewerUiState) : Reducer<ViewerUiState, ViewerUiEvent, ViewerNavEvent>(initial) {
+    private class ViewerReducer(initial: ViewerUiState) : Reducer<ViewerUiState, ViewerUiEvent, ViewerNavEvent>(initial) {
         override fun reduce(oldState: ViewerUiState, event: ViewerUiEvent) { /*EMPTY*/ }
     }
 
